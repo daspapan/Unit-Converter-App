@@ -11,7 +11,10 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -49,6 +52,12 @@ fun UnitConverter(){
     var oExpanded by remember { mutableStateOf(false)}
     val inputConversionFactor = remember { mutableStateOf(1.00) }
     val outputConversionFactor = remember { mutableStateOf(1.00) }
+
+    val customTextStyle = TextStyle(
+        fontFamily = FontFamily.Monospace,
+        fontSize = 32.sp,
+        color = Color.Red
+    )
 
     fun convertUnits(){
         val inputValueDouble = inputValue.toDoubleOrNull() ?: 0.0
@@ -188,7 +197,8 @@ fun UnitConverter(){
 
         Text(
             text = "Result:${inputValue} ${inputUnit} is ${outputValue} ${outputUnit}",
-            style = MaterialTheme.typography.h5
+            style = customTextStyle, // MaterialTheme.typography.h5,
+
         )
 
 
